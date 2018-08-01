@@ -15,8 +15,17 @@ public class Main {
 		Unit warriorUnit = (Unit) context.getBean("warrior_unit");
 		Unit peasantUnit = (Unit) context.getBean("peasant_unit");
 		
+		warriorUnit.show();
 		warriorUnit.testActions();
+		
+		peasantUnit.show();
 		peasantUnit.testActions();
+		
+		/* Inheritance */
+		
+		Unit rusL3WarriorUnit = (Unit) context.getBean("russian_l3_warrior_unit");
+		rusL3WarriorUnit.show();
+		rusL3WarriorUnit.testActions();
 	}
 
 }

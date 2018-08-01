@@ -12,13 +12,26 @@
 	
 	<bean id="warrior_unit" class="org.tyaa.springcontextdemo2.builder.Unit"
 		depends-on="play_field">
-		<constructor-arg type="org.tyaa.springcontextdemo2.interfaces.IPerson" ref="warrior"></constructor-arg>
-		<constructor-arg type="org.tyaa.springcontextdemo2.interfaces.ITool" ref="sword"></constructor-arg>
+		<constructor-arg type="org.tyaa.springcontextdemo2.interfaces.IPerson" ref="warrior" index="0"></constructor-arg>
+		<constructor-arg type="org.tyaa.springcontextdemo2.interfaces.ITool" ref="sword"  index="1"></constructor-arg>
 	</bean>
 	
 	<bean id="peasant_unit" class="org.tyaa.springcontextdemo2.builder.Unit"
 		depends-on="play_field">
 		<constructor-arg type="org.tyaa.springcontextdemo2.interfaces.IPerson" ref="peasant"></constructor-arg>
 		<constructor-arg type="org.tyaa.springcontextdemo2.interfaces.ITool" ref="plow"></constructor-arg>
+	</bean>
+	
+	<!-- Inheritance -->
+	
+	<bean id="base_warrior_unit" class="org.tyaa.springcontextdemo2.builder.Unit"
+		depends-on="play_field">
+		<property name="person" ref="warrior"></property>
+		<property name="tool" ref="sword"></property>
+	</bean>
+	
+	<bean id="russian_l3_warrior_unit" parent="base_warrior_unit">
+		<constructor-arg value="Russian" type="String"></constructor-arg>
+		<constructor-arg value="3" type="int"></constructor-arg>
 	</bean>
 </beans>
