@@ -17,6 +17,7 @@
 	</bean>
 	
 	<bean id="peasant_unit" class="org.tyaa.springcontextdemo2.builder.Unit"
+		scope="prototype"
 		depends-on="play_field">
 		<constructor-arg type="org.tyaa.springcontextdemo2.interfaces.IPerson" ref="peasant"></constructor-arg>
 		<constructor-arg type="org.tyaa.springcontextdemo2.interfaces.ITool" ref="plow"></constructor-arg>

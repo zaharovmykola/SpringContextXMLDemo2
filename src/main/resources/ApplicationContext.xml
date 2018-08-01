@@ -8,4 +8,9 @@
 	<!-- depends-on -->
 	<import resource="SharedAppContext.xml"/>
 	<import resource="UnitAppContext.xml"/>
+	
+	<bean id="house" class="org.tyaa.springcontextdemo2.implementations.House"
+		depends-on="play_field">
+		<lookup-method name="createUnit" bean="peasant_unit"/>
+	</bean>
 </beans>
