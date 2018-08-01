@@ -8,12 +8,16 @@
 	<import resource="WarriorAppContext.xml"/>
 	<import resource="PeasantAppContext.xml"/>
 	
-	<bean id="warrior_unit" class="org.tyaa.springcontextdemo2.builder.Unit">
+	<!-- depends-on -->
+	
+	<bean id="warrior_unit" class="org.tyaa.springcontextdemo2.builder.Unit"
+		depends-on="play_field">
 		<constructor-arg type="org.tyaa.springcontextdemo2.interfaces.IPerson" ref="warrior"></constructor-arg>
 		<constructor-arg type="org.tyaa.springcontextdemo2.interfaces.ITool" ref="sword"></constructor-arg>
 	</bean>
 	
-	<bean id="peasant_unit" class="org.tyaa.springcontextdemo2.builder.Unit">
+	<bean id="peasant_unit" class="org.tyaa.springcontextdemo2.builder.Unit"
+		depends-on="play_field">
 		<constructor-arg type="org.tyaa.springcontextdemo2.interfaces.IPerson" ref="peasant"></constructor-arg>
 		<constructor-arg type="org.tyaa.springcontextdemo2.interfaces.ITool" ref="plow"></constructor-arg>
 	</bean>
