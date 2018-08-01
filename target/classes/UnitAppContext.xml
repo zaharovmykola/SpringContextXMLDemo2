@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+
+	<import resource="WarriorAppContext.xml"/>
+	<import resource="PeasantAppContext.xml"/>
+	
+	<bean id="warrior_unit" class="org.tyaa.springcontextdemo2.builder.Unit">
+		<constructor-arg type="org.tyaa.springcontextdemo2.interfaces.IPerson" ref="warrior"></constructor-arg>
+		<constructor-arg type="org.tyaa.springcontextdemo2.interfaces.ITool" ref="sword"></constructor-arg>
+	</bean>
+	
+	<bean id="peasant_unit" class="org.tyaa.springcontextdemo2.builder.Unit">
+		<constructor-arg type="org.tyaa.springcontextdemo2.interfaces.IPerson" ref="peasant"></constructor-arg>
+		<constructor-arg type="org.tyaa.springcontextdemo2.interfaces.ITool" ref="plow"></constructor-arg>
+	</bean>
+</beans>
