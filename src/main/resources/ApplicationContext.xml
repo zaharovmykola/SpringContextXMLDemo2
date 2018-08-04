@@ -13,4 +13,18 @@
 		depends-on="play_field">
 		<lookup-method name="createUnit" bean="peasant_unit"/>
 	</bean>
+	
+	<bean id="warriorPool" class="org.tyaa.springcontextdemo2.implementations.WarriorPool"
+		depends-on="play_field">
+		<property name="unitCollection">
+			<list>
+				<ref bean="warrior_unit"/>
+				<bean class="org.tyaa.springcontextdemo2.builder.Unit"
+					parent="base_warrior_unit" scope="prototype">
+					<constructor-arg type="org.tyaa.springcontextdemo2.interfaces.IPerson" ref="warrior" index="0"></constructor-arg>
+					<constructor-arg type="org.tyaa.springcontextdemo2.interfaces.ITool" ref="sword"  index="1"></constructor-arg>
+				</bean>
+			</list>
+		</property>
+	</bean>
 </beans>
