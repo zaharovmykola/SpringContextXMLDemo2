@@ -8,6 +8,15 @@ import org.tyaa.springcontextdemo2.interfaces.IUnitPool;
 public class WarriorPool implements IUnitPool {
 	
 	private Collection<Unit> mUnitCollection;
+	
+	public WarriorPool() {
+		super();
+	}
+
+	public WarriorPool(Collection<Unit> _unitCollection) {
+		super();
+		mUnitCollection = _unitCollection;
+	}
 
 	@Override
 	public Collection<Unit> getUnitCollection() {

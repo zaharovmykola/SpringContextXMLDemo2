@@ -56,6 +56,22 @@ public class Unit implements IUnit{
 		mPerson = _person;
 	}
 
+	public String getNationality() {
+		return mNationality;
+	}
+
+	public void setNationality(String _nationality) {
+		mNationality = _nationality;
+	}
+
+	public int getLevel() {
+		return mLevel;
+	}
+
+	public void setLevel(int _level) {
+		mLevel = _level;
+	}
+
 	public void show() {
 		
 		System.out.printf("Nationality: %s; level: %d\n", mNationality, mLevel);

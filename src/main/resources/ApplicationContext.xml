@@ -24,7 +24,21 @@
 					<constructor-arg type="org.tyaa.springcontextdemo2.interfaces.IPerson" ref="warrior" index="0"></constructor-arg>
 					<constructor-arg type="org.tyaa.springcontextdemo2.interfaces.ITool" ref="sword"  index="1"></constructor-arg>
 				</bean>
+				<bean class="org.tyaa.springcontextdemo2.builder.Unit"
+					parent="base_warrior_unit" scope="prototype">
+					
+					<property name="level" value="2"></property>
+					<property name="nationality" value="Italian"></property>
+				</bean>
 			</list>
 		</property>
+	</bean>
+	
+	<bean id="warriorPoolItalian" class="org.tyaa.springcontextdemo2.implementations.WarriorPool"
+		depends-on="play_field">
+		<constructor-arg
+			value="#{warriorPool.unitCollection.?[nationality != null ? nationality.toLowerCase() eq 'italian' : false]}"
+		>
+		</constructor-arg>
 	</bean>
 </beans>

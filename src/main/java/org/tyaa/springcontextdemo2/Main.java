@@ -47,6 +47,11 @@ public class Main {
 		
 		//WarriorPool wPool = (WarriorPool) context.getBean("warriorPool");
 		//wPool.testActions();
+		
+		/* Bean pool restricted using SpEL */
+		
+		WarriorPool wPool = (WarriorPool) context.getBean("warriorPoolItalian");
+		wPool.testActions();
 	}
 
 }
