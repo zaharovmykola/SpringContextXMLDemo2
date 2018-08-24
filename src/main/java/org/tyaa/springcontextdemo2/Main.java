@@ -50,8 +50,15 @@ public class Main {
 		
 		/* Bean pool restricted using SpEL */
 		
-		WarriorPool wPool = (WarriorPool) context.getBean("warriorPoolItalian");
-		wPool.testActions();
+		//WarriorPool wPool = (WarriorPool) context.getBean("warriorPoolItalian");
+		//wPool.testActions();
+		
+		
+		/* Autowire */
+		
+		Unit rusL3WarriorUnit = (Unit) context.getBean("russian_l3_warrior_unit");
+		rusL3WarriorUnit.show();
+		rusL3WarriorUnit.testActions();
 	}
 
 }
