@@ -3,7 +3,8 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:c="http://www.springframework.org/schema/c"
 	xmlns:p="http://www.springframework.org/schema/p"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd"
+	default-lazy-init="true">
 
 	<!-- depends-on -->
 	<import resource="SharedAppContext.xml"/>
@@ -20,15 +21,28 @@
 			<list>
 				<ref bean="warrior_unit"/>
 				<bean class="org.tyaa.springcontextdemo2.builder.Unit"
-					parent="base_warrior_unit" scope="prototype">
+					parent="base_warrior_unit">
 					<constructor-arg type="org.tyaa.springcontextdemo2.interfaces.IPerson" ref="warrior" index="0"></constructor-arg>
 					<constructor-arg type="org.tyaa.springcontextdemo2.interfaces.ITool" ref="sword"  index="1"></constructor-arg>
 				</bean>
 				<bean class="org.tyaa.springcontextdemo2.builder.Unit"
-					parent="base_warrior_unit" scope="prototype">
+					parent="base_warrior_unit">
 					
 					<property name="level" value="2"></property>
 					<property name="nationality" value="Italian"></property>
+				</bean>
+				<null></null>
+				<bean class="org.tyaa.springcontextdemo2.builder.Unit"
+					  parent="base_warrior_unit">
+
+					<property name="level" value="2"></property>
+					<property name="nationality" value="Russian"></property>
+				</bean>
+				<bean class="org.tyaa.springcontextdemo2.builder.Unit"
+					  parent="base_warrior_unit">
+
+					<property name="level" value="3"></property>
+					<property name="nationality" value="italian"></property>
 				</bean>
 			</list>
 		</property>
