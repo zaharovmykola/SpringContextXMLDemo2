@@ -13,6 +13,17 @@ public class Main {
 		
 		ApplicationContext context =
 				new ClassPathXmlApplicationContext("ApplicationContext.xml");
+
+		////////////////////////////////////////////////////////////////////
+		//HOMETASK
+		WarriorPool wPool = (WarriorPool) context.getBean("warriorPool2");
+		wPool.testActions();
+		House house = (House) context.getBean("house");
+		System.out.println("HOUSE");
+		WarriorPool warriorPool = house.createUnit();
+		warriorPool.testActions();
+
+		////////////////////////////////////////////////////////////////////
 		
 		//Unit warriorUnit = (Unit) context.getBean("warrior_unit");
 		//Unit peasantUnit = (Unit) context.getBean("peasant_unit");
@@ -50,15 +61,14 @@ public class Main {
 		
 		/* Bean pool restricted using SpEL */
 		
-		//WarriorPool wPool = (WarriorPool) context.getBean("warriorPoolItalian");
-		//wPool.testActions();
+
 		
 		
 		/* Autowire */
 		
-		Unit rusL3WarriorUnit = (Unit) context.getBean("russian_l3_warrior_unit");
-		rusL3WarriorUnit.show();
-		rusL3WarriorUnit.testActions();
+//		Unit rusL3WarriorUnit = (Unit) context.getBean("russian_l3_warrior_unit");
+//		rusL3WarriorUnit.show();
+//		rusL3WarriorUnit.testActions();
 	}
 
 }

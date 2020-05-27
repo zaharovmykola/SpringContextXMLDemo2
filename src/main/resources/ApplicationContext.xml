@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:c="http://www.springframework.org/schema/c"
+	   xmlns:c="http://www.springframework.org/schema/c"
 	xmlns:p="http://www.springframework.org/schema/p"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd"
 	default-lazy-init="true">
@@ -10,49 +10,57 @@
 	<import resource="SharedAppContext.xml"/>
 	<import resource="UnitAppContext.xml"/>
 	
-	<bean id="house" class="org.tyaa.springcontextdemo2.implementations.House"
-		depends-on="play_field">
-		<lookup-method name="createUnit" bean="peasant_unit"/>
-	</bean>
-	
 	<bean id="warriorPool" class="org.tyaa.springcontextdemo2.implementations.WarriorPool"
 		depends-on="play_field">
 		<property name="unitCollection">
 			<list>
 				<ref bean="warrior_unit"/>
+
 				<bean class="org.tyaa.springcontextdemo2.builder.Unit"
 					parent="base_warrior_unit">
 					<constructor-arg type="org.tyaa.springcontextdemo2.interfaces.IPerson" ref="warrior" index="0"></constructor-arg>
 					<constructor-arg type="org.tyaa.springcontextdemo2.interfaces.ITool" ref="sword"  index="1"></constructor-arg>
-				</bean>
-				<bean class="org.tyaa.springcontextdemo2.builder.Unit"
-					parent="base_warrior_unit">
-					
 					<property name="level" value="2"></property>
 					<property name="nationality" value="Italian"></property>
 				</bean>
-				<null></null>
+
 				<bean class="org.tyaa.springcontextdemo2.builder.Unit"
 					  parent="base_warrior_unit">
-
+					<constructor-arg type="org.tyaa.springcontextdemo2.interfaces.IPerson" ref="warrior" index="0"></constructor-arg>
+					<constructor-arg type="org.tyaa.springcontextdemo2.interfaces.ITool" ref="sword"  index="1"></constructor-arg>
 					<property name="level" value="2"></property>
-					<property name="nationality" value="Russian"></property>
+					<property name="nationality" value="Italian"></property>
 				</bean>
 				<bean class="org.tyaa.springcontextdemo2.builder.Unit"
 					  parent="base_warrior_unit">
-
-					<property name="level" value="3"></property>
-					<property name="nationality" value="italian"></property>
+					<constructor-arg type="org.tyaa.springcontextdemo2.interfaces.IPerson" ref="warrior" index="0"></constructor-arg>
+					<constructor-arg type="org.tyaa.springcontextdemo2.interfaces.ITool" ref="sword"  index="1"></constructor-arg>
+					<property name="level" value="2"></property>
+					<property name="nationality" value="Italian"></property>
 				</bean>
+				<bean class="org.tyaa.springcontextdemo2.builder.Unit"
+					  parent="base_warrior_unit">
+					<constructor-arg type="org.tyaa.springcontextdemo2.interfaces.IPerson" ref="warrior" index="0"></constructor-arg>
+					<constructor-arg type="org.tyaa.springcontextdemo2.interfaces.ITool" ref="sword"  index="1"></constructor-arg>
+					<property name="level" value="2"></property>
+					<property name="nationality" value="Italian"></property>
+				</bean>
+
 			</list>
 		</property>
 	</bean>
 	
-	<bean id="warriorPoolItalian" class="org.tyaa.springcontextdemo2.implementations.WarriorPool"
+	<bean id="warriorPool2" class="org.tyaa.springcontextdemo2.implementations.WarriorPool"
 		depends-on="play_field">
 		<constructor-arg
-			value="#{warriorPool.unitCollection.?[nationality != null ? nationality.toLowerCase() eq 'italian' : false]}"
+			value="#{warriorPool.unitCollection.?[level eq 2]}"
 		>
 		</constructor-arg>
 	</bean>
+
+	<bean id="house" class="org.tyaa.springcontextdemo2.implementations.House"
+		  depends-on="play_field">
+		<lookup-method name="createUnit" bean="warriorPool2"/>
+	</bean>
+
 </beans>

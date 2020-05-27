@@ -6,5 +6,5 @@ import org.tyaa.springcontextdemo2.interfaces.ICreator;
 public abstract class House implements ICreator{
 
 	@Override
-	public abstract Unit createUnit();
+	public abstract WarriorPool createUnit();
 }
